@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api/v1/users")
+@RequestMapping("api/v1")
 public class UserController {
 
     @Autowired
@@ -20,25 +20,25 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/all")
+    @GetMapping("/users/all")
     Iterable<User> getUsers() {return userService.getUsers();}
 
-    @GetMapping("/id/{id}")
+    @GetMapping("/user/{id}")
     Optional<User> getUser(@PathVariable Long id) {return userService.getUserById(id);}
 
-    @GetMapping("/{email}")
+    @GetMapping("/auth/login/{email}")
     Optional<User> getUserByEmail(@PathVariable String email){return userService.getUserByEmail(email);}
 
-    @PostMapping("/addUser")
+    @PostMapping("/auth/register")
     User addUser(@RequestBody User user) {return userService.addUser(user);}
 
     @PostMapping("/addUsers")
     Iterable<User> addUsers(@RequestBody List<User> users) {return userService.addUsers(users);}
 
-    @PutMapping("/{id}")
+    @PutMapping("/user/{id}")
     ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {return userService.updateUser(id, user);}
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/user/{id}")
     void deleteUser(@PathVariable Long id) {
         userService.deleteUserById(id);
     }
