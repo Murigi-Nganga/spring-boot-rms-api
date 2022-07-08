@@ -20,19 +20,19 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping
+    @GetMapping("/all")
     Iterable<User> getUsers() {return userService.getUsers();}
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     Optional<User> getUser(@PathVariable Long id) {return userService.getUserById(id);}
 
-    @PostMapping("/email")
-    Optional<User> getUserByEmail(@RequestBody String email){return userService.getUserByEmail(email);}
+    @GetMapping("/{email}")
+    Optional<User> getUserByEmail(@PathVariable String email){return userService.getUserByEmail(email);}
 
-    @PostMapping("/add")
+    @PostMapping("/addUser")
     User addUser(@RequestBody User user) {return userService.addUser(user);}
 
-    @PostMapping("/add-many")
+    @PostMapping("/addUsers")
     Iterable<User> addUsers(@RequestBody List<User> users) {return userService.addUsers(users);}
 
     @PutMapping("/{id}")
