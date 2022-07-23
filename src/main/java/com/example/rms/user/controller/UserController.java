@@ -42,7 +42,8 @@ public class UserController {
 
             loginResponseMap.put("userId" , _user.get().getUserId());
             loginResponseMap.put("firstName" , _user.get().getFirstName());
-            loginResponseMap.put("lastName" , _user.get().getLastName());
+            loginResponseMap.put("middleName" , _user.get().getMiddleName());
+            loginResponseMap.put("otherNames" , _user.get().getOtherNames());
             loginResponseMap.put("email" , _user.get().getEmail());
             loginResponseMap.put("phoneNumber" , _user.get().getPhoneNumber());
             loginResponseMap.put("token" ,UUID.randomUUID());
@@ -65,7 +66,8 @@ public class UserController {
 
         registerResponseMap.put("userId" , _user.getUserId());
         registerResponseMap.put("firstName" , _user.getFirstName());
-        registerResponseMap.put("lastName" , _user.getLastName());
+        registerResponseMap.put("middleName" , _user.getMiddleName());
+        registerResponseMap.put("otherNames" , _user.getOtherNames());
         registerResponseMap.put("email" , _user.getEmail());
         registerResponseMap.put("phoneNumber" , _user.getPhoneNumber());
         registerResponseMap.put("token" ,UUID.randomUUID());

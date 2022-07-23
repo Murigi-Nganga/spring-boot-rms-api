@@ -28,11 +28,13 @@ public class UserService {
 
     public Iterable<User> addUsers(List<User> users){return userRepository.saveAll(users);}
 
-    public ResponseEntity<User> updateUser(Long id, User user) {
+    public void updateUser(Long id, User user) {
 
-        return (userRepository.existsById(id))
-                ? new ResponseEntity<>(userRepository.save(user), HttpStatus.OK)
-                : new ResponseEntity<>(userRepository.save(user), HttpStatus.CREATED);
+        if ((userRepository.existsById(id))) {
+            new ResponseEntity<>(userRepository.save(user), HttpStatus.OK);
+        } else {
+            new ResponseEntity<>(userRepository.save(user), HttpStatus.CREATED);
+        }
     }
 
     public void deleteUserById(Long id){userRepository.deleteById(id);}
